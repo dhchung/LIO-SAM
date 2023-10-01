@@ -968,7 +968,7 @@ public:
     {
         updatePointAssociateToMap();
 
-        // #pragma omp parallel for num_threads(numberOfCores)
+        #pragma omp parallel for num_threads(numberOfCores)
         for (int i = 0; i < laserCloudCornerLastDSNum; i++)
         {
             PointType pointOri, pointSel, coeff;
@@ -1051,15 +1051,15 @@ public:
                         coeffSelCornerVec[i] = coeff;
                         laserCloudOriCornerFlag[i] = true;
 
-                        PointType selectedCurrentCorner = pointSel;
-                        selectedCurrentCorner.intensity = float(i);
-                        currentMatchedCorners->push_back(selectedCurrentCorner);
-                        for(int j = 0; j < 5; ++j) {
-                            PointType selectedMapCorner;
-                            selectedMapCorner = laserCloudCornerFromMapDS->points[pointSearchInd[j]];
-                            selectedMapCorner.intensity = float(i);
-                            mapMatchedCorners->push_back(selectedMapCorner);
-                        }
+                        // PointType selectedCurrentCorner = pointSel;
+                        // selectedCurrentCorner.intensity = float(i);
+                        // currentMatchedCorners->push_back(selectedCurrentCorner);
+                        // for(int j = 0; j < 5; ++j) {
+                        //     PointType selectedMapCorner;
+                        //     selectedMapCorner = laserCloudCornerFromMapDS->points[pointSearchInd[j]];
+                        //     selectedMapCorner.intensity = float(i);
+                        //     mapMatchedCorners->push_back(selectedMapCorner);
+                        // }
 
 
                     }
@@ -1072,7 +1072,7 @@ public:
     {
         updatePointAssociateToMap();
 
-        // #pragma omp parallel for num_threads(numberOfCores)
+        #pragma omp parallel for num_threads(numberOfCores)
         for (int i = 0; i < laserCloudSurfLastDSNum; i++)
         {
             PointType pointOri, pointSel, coeff;
@@ -1135,14 +1135,14 @@ public:
                         laserCloudOriSurfFlag[i] = true;
 
 
-                        PointType selectedCurrentSurface = pointSel;
-                        selectedCurrentSurface.intensity = float(i);
-                        currentMatchedSurfaces->push_back(selectedCurrentSurface);
-                        for(int j = 0; j < 5; ++j) {
-                            PointType selectedMapSurface = laserCloudSurfFromMapDS->points[pointSearchInd[j]];
-                            selectedMapSurface.intensity = float(i);
-                            mapMatchedSurfaces->push_back(selectedMapSurface);
-                        }
+                        // PointType selectedCurrentSurface = pointSel;
+                        // selectedCurrentSurface.intensity = float(i);
+                        // currentMatchedSurfaces->push_back(selectedCurrentSurface);
+                        // for(int j = 0; j < 5; ++j) {
+                        //     PointType selectedMapSurface = laserCloudSurfFromMapDS->points[pointSearchInd[j]];
+                        //     selectedMapSurface.intensity = float(i);
+                        //     mapMatchedSurfaces->push_back(selectedMapSurface);
+                        // }
 
                     }
                 }
@@ -1324,10 +1324,10 @@ public:
                 if (LMOptimization(iterCount) == true) {
                     
                     
-                    publishCloud(pubCurrentCorner, currentMatchedCorners, timeLaserInfoStamp, odometryFrame);
-                    publishCloud(pubCurrentSurface, currentMatchedSurfaces, timeLaserInfoStamp, odometryFrame);
-                    publishCloud(pubMatchedCorner, mapMatchedCorners, timeLaserInfoStamp, odometryFrame);
-                    publishCloud(pubMatchedSurface, mapMatchedSurfaces, timeLaserInfoStamp, odometryFrame);
+                    // publishCloud(pubCurrentCorner, currentMatchedCorners, timeLaserInfoStamp, odometryFrame);
+                    // publishCloud(pubCurrentSurface, currentMatchedSurfaces, timeLaserInfoStamp, odometryFrame);
+                    // publishCloud(pubMatchedCorner, mapMatchedCorners, timeLaserInfoStamp, odometryFrame);
+                    // publishCloud(pubMatchedSurface, mapMatchedSurfaces, timeLaserInfoStamp, odometryFrame);
                     
 
 
