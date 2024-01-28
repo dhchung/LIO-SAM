@@ -1,5 +1,6 @@
 #include "utility.h"
 #include "lio_sam/cloud_info.h"
+#include "tic_toc.h"
 
 struct VelodynePointXYZIRT
 {
@@ -304,6 +305,8 @@ public:
 
     void imuDeskewInfo()
     {
+        TicToc deskew_time;
+
         cloudInfo.imuAvailable = false;
 
         while (!imuQueue.empty())
@@ -359,6 +362,8 @@ public:
             return;
 
         cloudInfo.imuAvailable = true;
+
+        printf("deskew_time: %f\n", deskew_time.toc());
     }
 
     void odomDeskewInfo()
